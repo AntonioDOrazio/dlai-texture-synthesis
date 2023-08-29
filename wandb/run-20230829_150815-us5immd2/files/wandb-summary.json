@@ -1,0 +1,1 @@
+{"train/content_loss": 253422.421875, "train/style_loss": 5392111.0, "train/fid_loss": 61008.37890625, "train/loss": 5706542.0, "train/step": 0, "_timestamp": 1693314504.5134537, "_runtime": 9.092099666595459, "_step": 0, "_wandb": {"runtime": 9}}

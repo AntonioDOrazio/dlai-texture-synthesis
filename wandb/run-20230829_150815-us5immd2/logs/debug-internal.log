@@ -1,0 +1,186 @@
+2023-08-29 15:08:15,409 INFO    StreamThr :18655 [internal.py:wandb_internal():86] W&B internal server running at pid: 18655, started at: 2023-08-29 15:08:15.408480
+2023-08-29 15:08:15,414 DEBUG   HandlerThread:18655 [handler.py:handle_request():144] handle_request: status
+2023-08-29 15:08:15,435 INFO    WriterThread:18655 [datastore.py:open_for_write():85] open: /home/antonio/Scrivania/dlai-texture-synthesis/wandb/run-20230829_150815-us5immd2/run-us5immd2.wandb
+2023-08-29 15:08:15,436 DEBUG   SenderThread:18655 [sender.py:send():379] send: header
+2023-08-29 15:08:15,450 DEBUG   SenderThread:18655 [sender.py:send():379] send: run
+2023-08-29 15:08:16,020 INFO    SenderThread:18655 [dir_watcher.py:__init__():211] watching files in: /home/antonio/Scrivania/dlai-texture-synthesis/wandb/run-20230829_150815-us5immd2/files
+2023-08-29 15:08:16,020 INFO    SenderThread:18655 [sender.py:_start_run_threads():1121] run started: us5immd2 with start time 1693314495.421354
+2023-08-29 15:08:16,020 DEBUG   SenderThread:18655 [sender.py:send_request():406] send_request: summary_record
+2023-08-29 15:08:16,021 INFO    SenderThread:18655 [sender.py:_save_file():1375] saving file wandb-summary.json with policy end
+2023-08-29 15:08:16,027 DEBUG   HandlerThread:18655 [handler.py:handle_request():144] handle_request: check_version
+2023-08-29 15:08:16,028 DEBUG   SenderThread:18655 [sender.py:send_request():406] send_request: check_version
+2023-08-29 15:08:16,102 DEBUG   HandlerThread:18655 [handler.py:handle_request():144] handle_request: run_start
+2023-08-29 15:08:16,129 DEBUG   HandlerThread:18655 [system_info.py:__init__():31] System info init
+2023-08-29 15:08:16,129 DEBUG   HandlerThread:18655 [system_info.py:__init__():46] System info init done
+2023-08-29 15:08:16,129 INFO    HandlerThread:18655 [system_monitor.py:start():181] Starting system monitor
+2023-08-29 15:08:16,129 INFO    SystemMonitor:18655 [system_monitor.py:_start():145] Starting system asset monitoring threads
+2023-08-29 15:08:16,131 INFO    HandlerThread:18655 [system_monitor.py:probe():201] Collecting system info
+2023-08-29 15:08:16,132 INFO    SystemMonitor:18655 [interfaces.py:start():190] Started cpu monitoring
+2023-08-29 15:08:16,133 INFO    SystemMonitor:18655 [interfaces.py:start():190] Started disk monitoring
+2023-08-29 15:08:16,133 INFO    SystemMonitor:18655 [interfaces.py:start():190] Started gpu monitoring
+2023-08-29 15:08:16,134 INFO    SystemMonitor:18655 [interfaces.py:start():190] Started memory monitoring
+2023-08-29 15:08:16,134 INFO    SystemMonitor:18655 [interfaces.py:start():190] Started network monitoring
+2023-08-29 15:08:16,144 DEBUG   HandlerThread:18655 [system_info.py:probe():195] Probing system
+2023-08-29 15:08:16,146 DEBUG   HandlerThread:18655 [system_info.py:_probe_git():180] Probing git
+2023-08-29 15:08:16,153 DEBUG   HandlerThread:18655 [system_info.py:_probe_git():188] Probing git done
+2023-08-29 15:08:16,153 DEBUG   HandlerThread:18655 [system_info.py:probe():240] Probing system done
+2023-08-29 15:08:16,153 DEBUG   HandlerThread:18655 [system_monitor.py:probe():210] {'os': 'Linux-6.4.11-1-default-x86_64-with-glibc2.38', 'python': '3.11.4', 'heartbeatAt': '2023-08-29T13:08:16.144410', 'startedAt': '2023-08-29T13:08:15.394825', 'docker': None, 'cuda': None, 'args': (), 'state': 'running', 'program': '/home/antonio/Scrivania/dlai-texture-synthesis/train.py', 'codePath': 'train.py', 'git': {'remote': 'https://github.com/AntonioDOrazio/dlai-texture-synthesis', 'commit': '01e64406c2f37a8fbd158e79a89cefb366f3b968'}, 'email': 'dorazio.1967788@studenti.uniroma1.it', 'root': '/home/antonio/Scrivania/dlai-texture-synthesis', 'host': 'localhost.localdomain', 'username': 'antonio', 'executable': '/home/antonio/miniconda3/envs/dlai-env/bin/python', 'cpu_count': 4, 'cpu_count_logical': 8, 'cpu_freq': {'current': 3.1003750000000005, 'min': 800.0, 'max': 3500.0}, 'cpu_freq_per_core': [{'current': 3.1, 'min': 800.0, 'max': 3500.0}, {'current': 3.1, 'min': 800.0, 'max': 3500.0}, {'current': 3.103, 'min': 800.0, 'max': 3500.0}, {'current': 3.099, 'min': 800.0, 'max': 3500.0}, {'current': 3.099, 'min': 800.0, 'max': 3500.0}, {'current': 3.099, 'min': 800.0, 'max': 3500.0}, {'current': 3.1, 'min': 800.0, 'max': 3500.0}, {'current': 3.1, 'min': 800.0, 'max': 3500.0}], 'disk': {'total': 182.5400390625, 'used': 145.46642684936523}, 'gpu': 'NVIDIA GeForce GTX 1070', 'gpu_count': 1, 'gpu_devices': [{'name': 'NVIDIA GeForce GTX 1070', 'memory_total': 8589934592}], 'memory': {'total': 15.569461822509766}}
+2023-08-29 15:08:16,153 INFO    HandlerThread:18655 [system_monitor.py:probe():211] Finished collecting system info
+2023-08-29 15:08:16,153 INFO    HandlerThread:18655 [system_monitor.py:probe():214] Publishing system info
+2023-08-29 15:08:16,153 DEBUG   HandlerThread:18655 [system_info.py:_save_pip():51] Saving list of pip packages installed into the current environment
+2023-08-29 15:08:16,153 DEBUG   HandlerThread:18655 [system_info.py:_save_pip():67] Saving pip packages done
+2023-08-29 15:08:16,153 DEBUG   HandlerThread:18655 [system_info.py:_save_conda():74] Saving list of conda packages installed into the current environment
+2023-08-29 15:08:17,021 INFO    Thread-12 :18655 [dir_watcher.py:_on_file_created():271] file/dir created: /home/antonio/Scrivania/dlai-texture-synthesis/wandb/run-20230829_150815-us5immd2/files/conda-environment.yaml
+2023-08-29 15:08:17,022 INFO    Thread-12 :18655 [dir_watcher.py:_on_file_created():271] file/dir created: /home/antonio/Scrivania/dlai-texture-synthesis/wandb/run-20230829_150815-us5immd2/files/wandb-summary.json
+2023-08-29 15:08:17,022 INFO    Thread-12 :18655 [dir_watcher.py:_on_file_created():271] file/dir created: /home/antonio/Scrivania/dlai-texture-synthesis/wandb/run-20230829_150815-us5immd2/files/requirements.txt
+2023-08-29 15:08:18,373 DEBUG   HandlerThread:18655 [system_info.py:_save_conda():86] Saving conda packages done
+2023-08-29 15:08:18,373 INFO    HandlerThread:18655 [system_monitor.py:probe():216] Finished publishing system info
+2023-08-29 15:08:18,377 DEBUG   SenderThread:18655 [sender.py:send():379] send: files
+2023-08-29 15:08:18,377 INFO    SenderThread:18655 [sender.py:_save_file():1375] saving file wandb-metadata.json with policy now
+2023-08-29 15:08:18,381 DEBUG   HandlerThread:18655 [handler.py:handle_request():144] handle_request: stop_status
+2023-08-29 15:08:18,382 DEBUG   SenderThread:18655 [sender.py:send_request():406] send_request: stop_status
+2023-08-29 15:08:18,650 DEBUG   SenderThread:18655 [sender.py:send():379] send: telemetry
+2023-08-29 15:08:19,023 INFO    Thread-12 :18655 [dir_watcher.py:_on_file_modified():288] file/dir modified: /home/antonio/Scrivania/dlai-texture-synthesis/wandb/run-20230829_150815-us5immd2/files/conda-environment.yaml
+2023-08-29 15:08:19,024 INFO    wandb-upload_0:18655 [upload_job.py:push():131] Uploaded file /tmp/tmpwb5oo5obwandb/wtbcnrb3-wandb-metadata.json
+2023-08-29 15:08:19,024 INFO    Thread-12 :18655 [dir_watcher.py:_on_file_created():271] file/dir created: /home/antonio/Scrivania/dlai-texture-synthesis/wandb/run-20230829_150815-us5immd2/files/wandb-metadata.json
+2023-08-29 15:08:20,024 INFO    Thread-12 :18655 [dir_watcher.py:_on_file_created():271] file/dir created: /home/antonio/Scrivania/dlai-texture-synthesis/wandb/run-20230829_150815-us5immd2/files/output.log
+2023-08-29 15:08:21,224 DEBUG   HandlerThread:18655 [handler.py:handle_request():144] handle_request: status_report
+2023-08-29 15:08:21,815 DEBUG   SenderThread:18655 [sender.py:send():379] send: telemetry
+2023-08-29 15:08:21,817 DEBUG   SenderThread:18655 [sender.py:send():379] send: metric
+2023-08-29 15:08:21,818 DEBUG   SenderThread:18655 [sender.py:send():379] send: telemetry
+2023-08-29 15:08:21,818 DEBUG   SenderThread:18655 [sender.py:send():379] send: metric
+2023-08-29 15:08:21,818 WARNING SenderThread:18655 [sender.py:send_metric():1326] Seen metric with glob (shouldn't happen)
+2023-08-29 15:08:21,818 DEBUG   SenderThread:18655 [sender.py:send():379] send: metric
+2023-08-29 15:08:21,818 DEBUG   SenderThread:18655 [sender.py:send():379] send: metric
+2023-08-29 15:08:21,818 WARNING SenderThread:18655 [sender.py:send_metric():1326] Seen metric with glob (shouldn't happen)
+2023-08-29 15:08:21,818 DEBUG   SenderThread:18655 [sender.py:send():379] send: metric
+2023-08-29 15:08:21,818 DEBUG   SenderThread:18655 [sender.py:send():379] send: metric
+2023-08-29 15:08:21,818 DEBUG   SenderThread:18655 [sender.py:send():379] send: metric
+2023-08-29 15:08:22,025 INFO    Thread-12 :18655 [dir_watcher.py:_on_file_modified():288] file/dir modified: /home/antonio/Scrivania/dlai-texture-synthesis/wandb/run-20230829_150815-us5immd2/files/output.log
+2023-08-29 15:08:24,025 INFO    Thread-12 :18655 [dir_watcher.py:_on_file_modified():288] file/dir modified: /home/antonio/Scrivania/dlai-texture-synthesis/wandb/run-20230829_150815-us5immd2/files/output.log
+2023-08-29 15:08:24,514 DEBUG   HandlerThread:18655 [handler.py:handle_request():144] handle_request: partial_history
+2023-08-29 15:08:24,515 DEBUG   SenderThread:18655 [sender.py:send():379] send: metric
+2023-08-29 15:08:24,515 DEBUG   SenderThread:18655 [sender.py:send():379] send: metric
+2023-08-29 15:08:24,515 DEBUG   SenderThread:18655 [sender.py:send():379] send: metric
+2023-08-29 15:08:24,515 DEBUG   SenderThread:18655 [sender.py:send():379] send: metric
+2023-08-29 15:08:24,515 DEBUG   SenderThread:18655 [sender.py:send():379] send: history
+2023-08-29 15:08:24,515 DEBUG   SenderThread:18655 [sender.py:send_request():406] send_request: summary_record
+2023-08-29 15:08:24,516 INFO    SenderThread:18655 [sender.py:_save_file():1375] saving file wandb-summary.json with policy end
+2023-08-29 15:08:25,026 INFO    Thread-12 :18655 [dir_watcher.py:_on_file_modified():288] file/dir modified: /home/antonio/Scrivania/dlai-texture-synthesis/wandb/run-20230829_150815-us5immd2/files/wandb-summary.json
+2023-08-29 15:08:25,787 DEBUG   SenderThread:18655 [sender.py:send():379] send: exit
+2023-08-29 15:08:25,787 INFO    SenderThread:18655 [sender.py:send_exit():584] handling exit code: 1
+2023-08-29 15:08:25,787 INFO    SenderThread:18655 [sender.py:send_exit():586] handling runtime: 9
+2023-08-29 15:08:25,787 INFO    SenderThread:18655 [sender.py:_save_file():1375] saving file wandb-summary.json with policy end
+2023-08-29 15:08:25,787 INFO    SenderThread:18655 [sender.py:send_exit():592] send defer
+2023-08-29 15:08:25,788 DEBUG   HandlerThread:18655 [handler.py:handle_request():144] handle_request: defer
+2023-08-29 15:08:25,788 INFO    HandlerThread:18655 [handler.py:handle_request_defer():170] handle defer: 0
+2023-08-29 15:08:25,788 DEBUG   SenderThread:18655 [sender.py:send_request():406] send_request: defer
+2023-08-29 15:08:25,788 INFO    SenderThread:18655 [sender.py:send_request_defer():608] handle sender defer: 0
+2023-08-29 15:08:25,788 INFO    SenderThread:18655 [sender.py:transition_state():612] send defer: 1
+2023-08-29 15:08:25,788 DEBUG   HandlerThread:18655 [handler.py:handle_request():144] handle_request: defer
+2023-08-29 15:08:25,788 INFO    HandlerThread:18655 [handler.py:handle_request_defer():170] handle defer: 1
+2023-08-29 15:08:25,789 DEBUG   SenderThread:18655 [sender.py:send_request():406] send_request: defer
+2023-08-29 15:08:25,789 INFO    SenderThread:18655 [sender.py:send_request_defer():608] handle sender defer: 1
+2023-08-29 15:08:25,789 INFO    SenderThread:18655 [sender.py:transition_state():612] send defer: 2
+2023-08-29 15:08:25,789 DEBUG   HandlerThread:18655 [handler.py:handle_request():144] handle_request: defer
+2023-08-29 15:08:25,789 INFO    HandlerThread:18655 [handler.py:handle_request_defer():170] handle defer: 2
+2023-08-29 15:08:25,789 INFO    HandlerThread:18655 [system_monitor.py:finish():190] Stopping system monitor
+2023-08-29 15:08:25,789 DEBUG   SystemMonitor:18655 [system_monitor.py:_start():159] Starting system metrics aggregation loop
+2023-08-29 15:08:25,790 DEBUG   SystemMonitor:18655 [system_monitor.py:_start():166] Finished system metrics aggregation loop
+2023-08-29 15:08:25,790 INFO    HandlerThread:18655 [interfaces.py:finish():202] Joined cpu monitor
+2023-08-29 15:08:25,790 DEBUG   SystemMonitor:18655 [system_monitor.py:_start():170] Publishing last batch of metrics
+2023-08-29 15:08:25,790 INFO    HandlerThread:18655 [interfaces.py:finish():202] Joined disk monitor
+2023-08-29 15:08:25,896 INFO    HandlerThread:18655 [interfaces.py:finish():202] Joined gpu monitor
+2023-08-29 15:08:25,896 INFO    HandlerThread:18655 [interfaces.py:finish():202] Joined memory monitor
+2023-08-29 15:08:25,896 INFO    HandlerThread:18655 [interfaces.py:finish():202] Joined network monitor
+2023-08-29 15:08:25,897 DEBUG   SenderThread:18655 [sender.py:send_request():406] send_request: defer
+2023-08-29 15:08:25,897 INFO    SenderThread:18655 [sender.py:send_request_defer():608] handle sender defer: 2
+2023-08-29 15:08:25,897 INFO    SenderThread:18655 [sender.py:transition_state():612] send defer: 3
+2023-08-29 15:08:25,897 DEBUG   SenderThread:18655 [sender.py:send():379] send: stats
+2023-08-29 15:08:25,897 DEBUG   HandlerThread:18655 [handler.py:handle_request():144] handle_request: defer
+2023-08-29 15:08:25,898 INFO    HandlerThread:18655 [handler.py:handle_request_defer():170] handle defer: 3
+2023-08-29 15:08:25,898 DEBUG   SenderThread:18655 [sender.py:send_request():406] send_request: defer
+2023-08-29 15:08:25,898 INFO    SenderThread:18655 [sender.py:send_request_defer():608] handle sender defer: 3
+2023-08-29 15:08:25,898 INFO    SenderThread:18655 [sender.py:transition_state():612] send defer: 4
+2023-08-29 15:08:25,898 DEBUG   HandlerThread:18655 [handler.py:handle_request():144] handle_request: defer
+2023-08-29 15:08:25,898 INFO    HandlerThread:18655 [handler.py:handle_request_defer():170] handle defer: 4
+2023-08-29 15:08:25,898 DEBUG   SenderThread:18655 [sender.py:send_request():406] send_request: defer
+2023-08-29 15:08:25,898 INFO    SenderThread:18655 [sender.py:send_request_defer():608] handle sender defer: 4
+2023-08-29 15:08:25,898 INFO    SenderThread:18655 [sender.py:transition_state():612] send defer: 5
+2023-08-29 15:08:25,898 DEBUG   HandlerThread:18655 [handler.py:handle_request():144] handle_request: defer
+2023-08-29 15:08:25,899 INFO    HandlerThread:18655 [handler.py:handle_request_defer():170] handle defer: 5
+2023-08-29 15:08:25,899 DEBUG   SenderThread:18655 [sender.py:send():379] send: summary
+2023-08-29 15:08:25,899 INFO    SenderThread:18655 [sender.py:_save_file():1375] saving file wandb-summary.json with policy end
+2023-08-29 15:08:25,899 DEBUG   SenderThread:18655 [sender.py:send_request():406] send_request: defer
+2023-08-29 15:08:25,899 INFO    SenderThread:18655 [sender.py:send_request_defer():608] handle sender defer: 5
+2023-08-29 15:08:25,900 INFO    SenderThread:18655 [sender.py:transition_state():612] send defer: 6
+2023-08-29 15:08:25,900 DEBUG   HandlerThread:18655 [handler.py:handle_request():144] handle_request: defer
+2023-08-29 15:08:25,900 INFO    HandlerThread:18655 [handler.py:handle_request_defer():170] handle defer: 6
+2023-08-29 15:08:25,900 DEBUG   SenderThread:18655 [sender.py:send_request():406] send_request: defer
+2023-08-29 15:08:25,900 INFO    SenderThread:18655 [sender.py:send_request_defer():608] handle sender defer: 6
+2023-08-29 15:08:25,905 DEBUG   HandlerThread:18655 [handler.py:handle_request():144] handle_request: status_report
+2023-08-29 15:08:26,026 INFO    Thread-12 :18655 [dir_watcher.py:_on_file_modified():288] file/dir modified: /home/antonio/Scrivania/dlai-texture-synthesis/wandb/run-20230829_150815-us5immd2/files/output.log
+2023-08-29 15:08:26,026 INFO    Thread-12 :18655 [dir_watcher.py:_on_file_modified():288] file/dir modified: /home/antonio/Scrivania/dlai-texture-synthesis/wandb/run-20230829_150815-us5immd2/files/wandb-summary.json
+2023-08-29 15:08:26,112 INFO    SenderThread:18655 [sender.py:transition_state():612] send defer: 7
+2023-08-29 15:08:26,112 DEBUG   HandlerThread:18655 [handler.py:handle_request():144] handle_request: defer
+2023-08-29 15:08:26,112 INFO    HandlerThread:18655 [handler.py:handle_request_defer():170] handle defer: 7
+2023-08-29 15:08:26,113 DEBUG   SenderThread:18655 [sender.py:send_request():406] send_request: defer
+2023-08-29 15:08:26,113 INFO    SenderThread:18655 [sender.py:send_request_defer():608] handle sender defer: 7
+2023-08-29 15:08:26,788 DEBUG   HandlerThread:18655 [handler.py:handle_request():144] handle_request: poll_exit
+2023-08-29 15:08:27,027 INFO    Thread-12 :18655 [dir_watcher.py:_on_file_modified():288] file/dir modified: /home/antonio/Scrivania/dlai-texture-synthesis/wandb/run-20230829_150815-us5immd2/files/config.yaml
+2023-08-29 15:08:28,027 INFO    Thread-12 :18655 [dir_watcher.py:_on_file_modified():288] file/dir modified: /home/antonio/Scrivania/dlai-texture-synthesis/wandb/run-20230829_150815-us5immd2/files/output.log
+2023-08-29 15:08:29,229 INFO    SenderThread:18655 [sender.py:transition_state():612] send defer: 8
+2023-08-29 15:08:29,229 DEBUG   SenderThread:18655 [sender.py:send_request():406] send_request: poll_exit
+2023-08-29 15:08:29,230 DEBUG   HandlerThread:18655 [handler.py:handle_request():144] handle_request: defer
+2023-08-29 15:08:29,230 INFO    HandlerThread:18655 [handler.py:handle_request_defer():170] handle defer: 8
+2023-08-29 15:08:29,230 DEBUG   SenderThread:18655 [sender.py:send_request():406] send_request: defer
+2023-08-29 15:08:29,231 INFO    SenderThread:18655 [sender.py:send_request_defer():608] handle sender defer: 8
+2023-08-29 15:08:29,231 INFO    SenderThread:18655 [job_builder.py:build():281] Attempting to build job artifact
+2023-08-29 15:08:29,232 INFO    SenderThread:18655 [job_builder.py:_get_source_type():400] is repo sourced job
+2023-08-29 15:08:29,237 INFO    SenderThread:18655 [job_builder.py:build():374] adding wandb-job metadata file
+2023-08-29 15:08:29,241 INFO    SenderThread:18655 [sender.py:transition_state():612] send defer: 9
+2023-08-29 15:08:29,241 DEBUG   HandlerThread:18655 [handler.py:handle_request():144] handle_request: defer
+2023-08-29 15:08:29,241 INFO    HandlerThread:18655 [handler.py:handle_request_defer():170] handle defer: 9
+2023-08-29 15:08:29,242 DEBUG   SenderThread:18655 [sender.py:send():379] send: artifact
+2023-08-29 15:08:30,029 INFO    Thread-12 :18655 [dir_watcher.py:_on_file_modified():288] file/dir modified: /home/antonio/Scrivania/dlai-texture-synthesis/wandb/run-20230829_150815-us5immd2/files/output.log
+2023-08-29 15:08:30,662 INFO    wandb-upload_1:18655 [upload_job.py:push():89] Uploaded file /home/antonio/.local/share/wandb/artifacts/staging/tmpfbkf3mpw
+2023-08-29 15:08:30,662 INFO    wandb-upload_0:18655 [upload_job.py:push():89] Uploaded file /home/antonio/.local/share/wandb/artifacts/staging/tmp655_dxhj
+2023-08-29 15:08:31,790 DEBUG   HandlerThread:18655 [handler.py:handle_request():144] handle_request: keepalive
+2023-08-29 15:08:31,920 INFO    SenderThread:18655 [sender.py:send_artifact():1475] sent artifact job-https___github.com_AntonioDOrazio_dlai-texture-synthesis_train.py - {'id': 'QXJ0aWZhY3Q6NTU0NDQwNjUw', 'digest': '1a9ae06cc6abead556ba43da4f3d2072', 'state': 'PENDING', 'aliases': [], 'artifactSequence': {'id': 'QXJ0aWZhY3RDb2xsZWN0aW9uOjkzNjI5NDMw', 'latestArtifact': None}, 'version': 'latest'}
+2023-08-29 15:08:31,920 DEBUG   SenderThread:18655 [sender.py:send_request():406] send_request: defer
+2023-08-29 15:08:31,920 INFO    SenderThread:18655 [sender.py:send_request_defer():608] handle sender defer: 9
+2023-08-29 15:08:31,920 INFO    SenderThread:18655 [dir_watcher.py:finish():358] shutting down directory watcher
+2023-08-29 15:08:32,031 INFO    SenderThread:18655 [dir_watcher.py:finish():388] scan: /home/antonio/Scrivania/dlai-texture-synthesis/wandb/run-20230829_150815-us5immd2/files
+2023-08-29 15:08:32,031 INFO    SenderThread:18655 [dir_watcher.py:finish():402] scan save: /home/antonio/Scrivania/dlai-texture-synthesis/wandb/run-20230829_150815-us5immd2/files/config.yaml config.yaml
+2023-08-29 15:08:32,032 INFO    SenderThread:18655 [dir_watcher.py:finish():402] scan save: /home/antonio/Scrivania/dlai-texture-synthesis/wandb/run-20230829_150815-us5immd2/files/wandb-summary.json wandb-summary.json
+2023-08-29 15:08:32,037 INFO    SenderThread:18655 [dir_watcher.py:finish():402] scan save: /home/antonio/Scrivania/dlai-texture-synthesis/wandb/run-20230829_150815-us5immd2/files/requirements.txt requirements.txt
+2023-08-29 15:08:32,037 INFO    SenderThread:18655 [dir_watcher.py:finish():402] scan save: /home/antonio/Scrivania/dlai-texture-synthesis/wandb/run-20230829_150815-us5immd2/files/conda-environment.yaml conda-environment.yaml
+2023-08-29 15:08:32,046 INFO    SenderThread:18655 [dir_watcher.py:finish():402] scan save: /home/antonio/Scrivania/dlai-texture-synthesis/wandb/run-20230829_150815-us5immd2/files/wandb-metadata.json wandb-metadata.json
+2023-08-29 15:08:32,046 INFO    SenderThread:18655 [dir_watcher.py:finish():402] scan save: /home/antonio/Scrivania/dlai-texture-synthesis/wandb/run-20230829_150815-us5immd2/files/output.log output.log
+2023-08-29 15:08:32,047 INFO    SenderThread:18655 [sender.py:transition_state():612] send defer: 10
+2023-08-29 15:08:32,047 DEBUG   HandlerThread:18655 [handler.py:handle_request():144] handle_request: defer
+2023-08-29 15:08:32,047 INFO    HandlerThread:18655 [handler.py:handle_request_defer():170] handle defer: 10
+2023-08-29 15:08:32,051 DEBUG   SenderThread:18655 [sender.py:send_request():406] send_request: defer
+2023-08-29 15:08:32,051 INFO    SenderThread:18655 [sender.py:send_request_defer():608] handle sender defer: 10
+2023-08-29 15:08:32,051 INFO    SenderThread:18655 [file_pusher.py:finish():159] shutting down file pusher
+2023-08-29 15:08:32,416 WARNING StreamThr :18655 [internal.py:is_dead():414] Internal process exiting, parent pid 18621 disappeared
+2023-08-29 15:08:32,417 ERROR   StreamThr :18655 [internal.py:wandb_internal():152] Internal process shutdown.
+2023-08-29 15:08:32,436 INFO    wandb-upload_1:18655 [upload_job.py:push():131] Uploaded file /home/antonio/Scrivania/dlai-texture-synthesis/wandb/run-20230829_150815-us5immd2/files/config.yaml
+2023-08-29 15:08:32,563 INFO    wandb-upload_2:18655 [upload_job.py:push():131] Uploaded file /home/antonio/Scrivania/dlai-texture-synthesis/wandb/run-20230829_150815-us5immd2/files/wandb-summary.json
+2023-08-29 15:08:32,655 INFO    wandb-upload_3:18655 [upload_job.py:push():131] Uploaded file /home/antonio/Scrivania/dlai-texture-synthesis/wandb/run-20230829_150815-us5immd2/files/conda-environment.yaml
+2023-08-29 15:08:32,670 INFO    wandb-upload_4:18655 [upload_job.py:push():131] Uploaded file /home/antonio/Scrivania/dlai-texture-synthesis/wandb/run-20230829_150815-us5immd2/files/output.log
+2023-08-29 15:08:32,675 INFO    wandb-upload_0:18655 [upload_job.py:push():131] Uploaded file /home/antonio/Scrivania/dlai-texture-synthesis/wandb/run-20230829_150815-us5immd2/files/requirements.txt
+2023-08-29 15:08:32,876 INFO    Thread-11 (_thread_body):18655 [sender.py:transition_state():612] send defer: 11
+2023-08-29 15:08:32,877 DEBUG   HandlerThread:18655 [handler.py:handle_request():144] handle_request: defer
+2023-08-29 15:08:32,877 INFO    HandlerThread:18655 [handler.py:handle_request_defer():170] handle defer: 11
+2023-08-29 15:08:32,877 INFO    HandlerThread:18655 [handler.py:finish():857] shutting down handler
+2023-08-29 15:08:32,878 INFO    WriterThread:18655 [datastore.py:close():294] close: /home/antonio/Scrivania/dlai-texture-synthesis/wandb/run-20230829_150815-us5immd2/run-us5immd2.wandb
+2023-08-29 15:08:32,879 DEBUG   SenderThread:18655 [sender.py:send_request():406] send_request: defer
+2023-08-29 15:08:32,879 INFO    SenderThread:18655 [sender.py:send_request_defer():608] handle sender defer: 11
+2023-08-29 15:08:32,879 INFO    SenderThread:18655 [file_pusher.py:join():164] waiting for file pusher
+2023-08-29 15:08:32,879 INFO    SenderThread:18655 [sender.py:transition_state():612] send defer: 12
+2023-08-29 15:08:32,879 INFO    SenderThread:18655 [sender.py:finish():1552] shutting down sender
+2023-08-29 15:08:32,879 INFO    SenderThread:18655 [file_pusher.py:finish():159] shutting down file pusher
+2023-08-29 15:08:32,879 INFO    SenderThread:18655 [file_pusher.py:join():164] waiting for file pusher
+2023-08-29 15:08:32,880 INFO    SenderThread:18655 [file_stream.py:finish():593] file stream finish called
+2023-08-29 15:08:33,170 INFO    SenderThread:18655 [file_stream.py:finish():597] file stream finish is done

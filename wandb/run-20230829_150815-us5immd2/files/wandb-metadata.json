@@ -1,0 +1,85 @@
+{
+    "os": "Linux-6.4.11-1-default-x86_64-with-glibc2.38",
+    "python": "3.11.4",
+    "heartbeatAt": "2023-08-29T13:08:16.144410",
+    "startedAt": "2023-08-29T13:08:15.394825",
+    "docker": null,
+    "cuda": null,
+    "args": [],
+    "state": "running",
+    "program": "/home/antonio/Scrivania/dlai-texture-synthesis/train.py",
+    "codePath": "train.py",
+    "git": {
+        "remote": "https://github.com/AntonioDOrazio/dlai-texture-synthesis",
+        "commit": "01e64406c2f37a8fbd158e79a89cefb366f3b968"
+    },
+    "email": "dorazio.1967788@studenti.uniroma1.it",
+    "root": "/home/antonio/Scrivania/dlai-texture-synthesis",
+    "host": "localhost.localdomain",
+    "username": "antonio",
+    "executable": "/home/antonio/miniconda3/envs/dlai-env/bin/python",
+    "cpu_count": 4,
+    "cpu_count_logical": 8,
+    "cpu_freq": {
+        "current": 3.1003750000000005,
+        "min": 800.0,
+        "max": 3500.0
+    },
+    "cpu_freq_per_core": [
+        {
+            "current": 3.1,
+            "min": 800.0,
+            "max": 3500.0
+        },
+        {
+            "current": 3.1,
+            "min": 800.0,
+            "max": 3500.0
+        },
+        {
+            "current": 3.103,
+            "min": 800.0,
+            "max": 3500.0
+        },
+        {
+            "current": 3.099,
+            "min": 800.0,
+            "max": 3500.0
+        },
+        {
+            "current": 3.099,
+            "min": 800.0,
+            "max": 3500.0
+        },
+        {
+            "current": 3.099,
+            "min": 800.0,
+            "max": 3500.0
+        },
+        {
+            "current": 3.1,
+            "min": 800.0,
+            "max": 3500.0
+        },
+        {
+            "current": 3.1,
+            "min": 800.0,
+            "max": 3500.0
+        }
+    ],
+    "disk": {
+        "total": 182.5400390625,
+        "used": 145.46642684936523
+    },
+    "gpu": "NVIDIA GeForce GTX 1070",
+    "gpu_count": 1,
+    "gpu_devices": [
+        {
+            "name": "NVIDIA GeForce GTX 1070",
+            "memory_total": 8589934592
+        }
+    ],
+    "memory": {
+        "total": 15.569461822509766
+    }
+}
