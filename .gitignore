@@ -1,4 +1,5 @@
 dataset/**
 train_results/**
-old_grainings/**
+old_trainings/**
 __pycache__/**
+wandb/**

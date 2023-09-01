@@ -13,7 +13,7 @@ wandb.init(project="dlai-texture-synthesis")
 # Configuration
 DEVICE = torch.device("cuda" if torch.cuda.is_available() else "cpu")
 NUM_EPOCHS = 600
-BATCH_SIZE = 24 
+BATCH_SIZE = 16#24 
 LEARNING_RATE =  0.0032 
 SAMPLE_DIR = "./dataset/textures-label/x"
 GROUND_TRUTH_DIR = "./dataset/textures-label/y"

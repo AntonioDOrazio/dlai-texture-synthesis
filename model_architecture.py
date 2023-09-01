@@ -1,15 +1,11 @@
 import torch
 import torch.nn.functional as F
 from torch import nn
-
 import matplotlib.pyplot as plt
+
+
 def visualize_self_similarity_map(similarity_scores):
-    """
-    Visualize the self-similarity map using a heatmap.
-    
-    Args:
-        similarity_scores (torch.Tensor): The similarity scores sp,q of size (H, W).
-    """
+
     similarity_scores_np = similarity_scores.permute(0,2,3,1).detach().cpu().numpy()
     
     for score in similarity_scores_np:
@@ -32,7 +28,6 @@ def weights_init(m):
         init.kaiming_normal_(m.weight)
         if m.bias is not None:
             init.constant_(m.bias, 0)
-
 
 
 '''
@@ -60,7 +55,6 @@ class VGGEncoder(nn.Module):
         self.convolution_layer = nn.Conv2d(in_channels=512, out_channels=1024, kernel_size=1).to(DEVICE)
 
 
-
     def forward(self, x):
         x=x.to(DEVICE)
         x = (x - self.mean) / self.std
@@ -75,7 +69,6 @@ class VGGEncoder(nn.Module):
         y_4_2 = features[3]
         y_3_2 = features[2]
         return y_5_2, y_4_2, y_3_2
-
 
 
 class Encoder(nn.Module):
@@ -140,88 +133,6 @@ class Encoder(nn.Module):
 '''
     Self similarity block
 '''
-class SelfSimilarity(nn.Module):
-    def __init__(self):
-        super(SelfSimilarity, self).__init__()
-
-    def calculate_similarity_score(self, input, p, q):
-        """
-        Calculate the similarity score s(p, q) for a given (p, q)-shifting.
-
-        Args:
-            input (torch.Tensor): The original feature map of size (B, C, H, W).
-            p (int): The vertical shift.
-            q (int): The horizontal shift.
-
-        Returns:
-            torch.Tensor: The similarity score s(p, q).
-        """
-        B, C, H, W = input.shape
-        m_min = max(0, p)
-        m_max = min(p + H, H)
-        n_min = max(0, q)
-        n_max = min(q + W, W)
-
-        numerator = torch.norm(input[:, :, m_min:m_max, n_min:n_max] - input[:, :, m_min - p:m_max - p, n_min - q:n_max - q], p=2)
-        denominator = torch.norm(input)
-        
-        return -numerator / denominator
-
-    def compute_similarity_scores(self, input):
-        """
-        Compute similarity scores sp,q for all possible shifted copies.
-
-        Args:
-            input (torch.Tensor): The original feature map of size (B, C, H, W).
-
-        Returns:
-            torch.Tensor: The similarity scores sp,q of size (H + 1, W + 1).
-        """
-        B, C, H, W = input.shape
-        similarity_scores = torch.zeros((B, H + 1, W + 1), dtype=input.dtype).to(input.device)
-
-        for p in range(-H // 2, H // 2 + 1):  # Adjust the range here
-            for q in range(-W // 2, W // 2 + 1):  # Adjust the range here
-                similarity_scores[:, p + H // 2, q + W // 2] = self.calculate_similarity_score(input, p, q)
-
-        return similarity_scores
-
-    def aggregate_shifted_features(self, input, similarity_scores):
-        """
-        Aggregate the shifted copies of F using the similarity scores.
-
-        Args:
-            input (torch.Tensor): The original feature map of size (B, C, H, W).
-            similarity_scores (torch.Tensor): The similarity scores for all possible shifted copies.
-
-        Returns:
-            torch.Tensor: The aggregated feature G of size (C, H + 1, W + 1).
-        """
-        B, C, H, W = input.shape
-        Csum = torch.zeros((B, C, H + 1, W + 1), dtype=input.dtype).to(input.device)
-
-        for i in range(H + 1):
-            for j in range(W + 1):
-                p = i - H // 2
-                q = j - W // 2
-                weight = similarity_scores[:, p + H // 2, q + W // 2]
-
-                Csum[:, :, i, j] = input[:, :, i % H, j % W] * weight[:, None, None]  # Proper broadcasting
-
-        Csum = torch.mean(Csum, dim=1, keepdim=True)
-
-        return Csum
-
-    def forward(self, x):
-        similarity_scores = self.compute_similarity_scores(x)
-        y = self.aggregate_shifted_features(x, similarity_scores)
-        return y
-
-
-import torch
-import torch.nn as nn
-import torch.nn.functional as F
-
 class SelfSimilarityMap(nn.Module):
     def __init__(self):
         super(SelfSimilarityMap, self).__init__()
@@ -235,7 +146,6 @@ class SelfSimilarityMap(nn.Module):
         
         map = torch.zeros(batch_size, channels, 2 * height, 2 * width)
         map[:, :, center_h_start:center_h_end, center_w_start:center_w_end] = 1
-        
 
         return map
 
@@ -292,9 +202,6 @@ class SelfSimilarityMap(nn.Module):
 
         return similarity_map
 
-
-
-
 '''
     Transposed convolution blocks 3,4,5
 '''
@@ -332,13 +239,10 @@ class TransConvBlock(nn.Module):
         )
 
         self.selfSimilarityMapBranch_Conv2 = nn.Conv2d(8,1,3,1, padding=1)
-        # Transposed conv
-        #self.transposed_conv = nn.ConvTranspose2d(in_channels=1, out_channels=filter_size, kernel_size=(input_size // div_factor, input_size // div_factor))
         
         self.outputBranch_conv = nn.Sequential(
             nn.Conv2d(filter_size, filter_size, 3, stride=1, padding=1), nn.ReLU())
         
-
         self.apply(weights_init)
 
     def forward(self, x, raw_image=None):
@@ -346,12 +250,8 @@ class TransConvBlock(nn.Module):
         # Filters
         w = self.filterBranch_conv1(x)
         w = self.filterBranch_conv2(w)
-        #print("WEIGHTS ", w.shape)
-
         b = self.avg_pooling(w)
-        #print("SHAPE B ", b.shape)
         b = self.filterBranch_FC1(b.reshape(b.shape[0], -1))
-        #print("BIASES ", b.shape)
 
         # Self similarity
         sim_in = x
@@ -359,14 +259,8 @@ class TransConvBlock(nn.Module):
             sim_in = torch.nn.functional.upsample_bilinear(raw_image, x.shape[3])
 
         y = self.self_similarity(sim_in)
-        #visualize_self_similarity_map(y)
-        #print("similarity size ", y.shape)
-
-        #print("SELF SIM ", y.shape)
         y = self.selfSimilarityMapBranch_Conv1(y)
-        #print("IS NAN ", torch.isnan(y))
         y = self.selfSimilarityMapBranch_Conv2(y)
-        #visualize_self_similarity_map(y)
 
         for i in range(y.shape[0]):
             if i == 0:
@@ -416,13 +310,10 @@ class Decoder(nn.Module):
     def forward(self, block5, block4, block3):
         y = self.upsample1(block5)
         y = self.conv6(y)
-
-        #print("Summing ", y.shape, " with ", block4.shape)
-
-        y = y + block4#self.sigmoid(y + block4)
+        y = y + block4
         y = self.upsample2(y)
         y = self.conv7(y)
-        y = y + block3 #self.sigmoid(y + block3)
+        y = y + block3 
         y = self.upsample3(y)
         y = self.conv8(y)
         y = self.upsample4(y)

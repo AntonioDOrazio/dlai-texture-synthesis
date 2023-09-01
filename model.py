@@ -3,12 +3,12 @@ from typing import Any, Optional
 from pytorch_lightning.utilities.types import STEP_OUTPUT
 import torch
 from vgg_loss import VGGFeatures, style_loss, content_loss
-from model_architecture import Encoder, TransConvBlock, Decoder
+from model_architecture import Encoder, TransConvBlock, Decoder, VGGEncoder
 from torch import optim
 import pytorch_lightning as L
 from torchmetrics.image.fid import FrechetInceptionDistance
 from torch.optim import lr_scheduler
-
+from sliced_loss.sliced_loss import slicing_loss
 from torchmetrics.image import StructuralSimilarityIndexMeasure
 
 
@@ -17,9 +17,15 @@ _ = torch.manual_seed(123)
 DEVICE = torch.device("cuda" if torch.cuda.is_available() else "cpu")
 
 class TextureSynthesizer(L.LightningModule):
-    def __init__(self, width, height, train=False):
+    def __init__(self, width, height, train=False, encoder_type="default"):
         super().__init__()
-        self.encoder = Encoder()
+        if encoder_type == "default": 
+            self.encoder = Encoder()
+        elif encoder_type == "vgg":
+            self.encoder = VGGEncoder()
+        else:
+            raise TypeError("Encoder type: [default, vgg]")
+
 
         dummy_input = torch.randn(1, 3, width, height)
         y_5_2, y_4_2, y_3_2 = self.encoder(dummy_input)
@@ -67,7 +73,7 @@ class TextureSynthesizer(L.LightningModule):
         self.scheduler = lr_scheduler.StepLR(self.optimizer, step_size=step_size, gamma=gamma)
 
 
-    def training_step(self, batch, batch_idx):
+    def training_step(self, batch, batch_idx, style_loss_type="gram"):
         self.fid.reset()
 
         sample_images = batch[0].to(DEVICE)
@@ -84,8 +90,16 @@ class TextureSynthesizer(L.LightningModule):
         gamma = 0.2e4
         
         content_loss_value = alpha * content_loss(reconstructed_features[3], target_features[3], reduction="sum")
-        style_loss_value =  beta * style_loss(reconstructed_features, target_features, reduction="sum")
-        
+
+        if style_loss_type == "gram":
+            style_loss_value =  beta * style_loss(reconstructed_features, target_features, reduction="sum")
+        elif style_loss_type == "wasserstein":
+            beta = beta*1e3
+            style_loss_value = beta * slicing_loss(sample_reconstructed, target_images)
+        else: 
+            raise TypeError("style_loss_type: [gram, wasserstein]")
+
+
         self.fid.update(sample_reconstructed, real = False)
         self.fid.update(target_images, real= True)
         fid_loss_value = gamma * self.fid.compute()
@@ -110,7 +124,7 @@ class TextureSynthesizer(L.LightningModule):
 
         return reconstructed, metrics
 
-    def validation_step(self, batch, batch_idx):
+    def validation_step(self, batch, batch_idx, style_loss_type="gram"):
         
         with torch.no_grad():
 
@@ -129,9 +143,16 @@ class TextureSynthesizer(L.LightningModule):
             gamma = 0.2e4
             
             content_loss_value = alpha * content_loss(reconstructed_features[3], target_features[3], reduction="sum")
-            style_loss_value =  beta * style_loss(reconstructed_features, target_features, reduction="sum")
-
             
+
+            if style_loss_type == "gram":
+                style_loss_value =  beta * style_loss(reconstructed_features, target_features, reduction="sum")
+            elif style_loss_type == "wasserstein":
+                beta = beta*1e3
+                style_loss_value = beta * slicing_loss(sample_reconstructed, target_images)
+            else: 
+                raise TypeError("style_loss_type: [gram, wasserstein]")
+
             self.fid.update(sample_reconstructed, real = False)
             self.fid.update(target_images, real= True)
             metric_fid = self.fid.compute()
