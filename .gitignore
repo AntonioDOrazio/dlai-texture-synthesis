@@ -1,3 +1,4 @@
 dataset/**
 train_results/**
 old_grainings/**
+__pycache__/**
