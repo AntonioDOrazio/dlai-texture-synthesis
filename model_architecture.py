@@ -3,14 +3,12 @@ import torch.nn.functional as F
 from torch import nn
 import matplotlib.pyplot as plt
 
-
 def visualize_self_similarity_map(similarity_scores):
 
     similarity_scores_np = similarity_scores.permute(0,2,3,1).detach().cpu().numpy()
     
     for score in similarity_scores_np:
 
-        # Create a heatmap using matplotlib
         plt.figure(figsize=(8, 6))
         plt.imshow(score, cmap='hot', interpolation='nearest')
         plt.colorbar()
@@ -75,7 +73,6 @@ class Encoder(nn.Module):
     def __init__(self):
         super(Encoder, self).__init__()
 
-        # TODO nn.SyncBatchNorm
         self.conv1 = nn.Sequential( 
             nn.Conv2d(padding=1, in_channels=3, out_channels=64, kernel_size=3, stride=1), 
             nn.BatchNorm2d(64),
@@ -127,7 +124,6 @@ class Encoder(nn.Module):
         y_5_2 = self.conv5_2(y)
 
         return y_5_2, y_4_2, y_3_2
-
 
 
 '''

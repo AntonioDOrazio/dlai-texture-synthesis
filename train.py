@@ -163,7 +163,6 @@ for epoch in range(NUM_EPOCHS):
 
     with torch.no_grad():
         
-        #random_indices = random.sample(range(len(sample_reconstructed)), k=min(15, len(sample_reconstructed)))
         epoch_dir = os.path.join(SAVE_DIR, f"epoch_{epoch+1}")
         os.makedirs(epoch_dir, exist_ok=True)
         for idx in range(len(sample_reconstructed)):
@@ -174,7 +173,6 @@ for epoch in range(NUM_EPOCHS):
             image = target_images[idx].cpu()
             save_image(image, os.path.join(epoch_dir, f"image_{idx}_y.png"))
 
-        # Create a new tensor to hold the concatenated images
         concatenated_img = torch.cat((target_images, sample_reconstructed.cpu()), dim=2)
 
         image = wandb.Image(
@@ -183,6 +181,7 @@ for epoch in range(NUM_EPOCHS):
         )
         wandb.log({"results": image})
 
+    # Uncomment for checkpoints
     '''
     if epoch % 50 == 0:
         architecture_path = os.path.join(SAVE_DIR, f"model_architecture_{epoch}.pth")
