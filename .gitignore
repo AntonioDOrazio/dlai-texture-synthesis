@@ -3,3 +3,6 @@ train_results/**
 old_trainings/**
 __pycache__/**
 wandb/**
+artifacts/**
+training 3/**
+.vscode/**

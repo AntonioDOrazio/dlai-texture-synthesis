@@ -13,13 +13,13 @@ wandb.init(project="dlai-texture-synthesis")
 # Configuration
 DEVICE = torch.device("cuda" if torch.cuda.is_available() else "cpu")
 NUM_EPOCHS = 600
-BATCH_SIZE = 16#24 
+BATCH_SIZE = 24 
 LEARNING_RATE =  0.0032 
 SAMPLE_DIR = "./dataset/textures-label/x"
 GROUND_TRUTH_DIR = "./dataset/textures-label/y"
 TRAIN_PERCENTAGE = 20
 TEST_PERCENTAGE = 5
-STYLE_LOSS ="gram-matrix"
+STYLE_LOSS ="wasserstein"
 
 SAVE_DIR = "train_results"
 os.makedirs(SAVE_DIR, exist_ok=True)
@@ -114,7 +114,7 @@ test_dataset = PairedImageDataset(GROUND_TRUTH_DIR, GROUND_TRUTH_DIR, TEST_PERCE
 test_loader = DataLoader(test_dataset, batch_size=BATCH_SIZE, shuffle=True)
 
 
-model = TextureSynthesizer(64, 64, train=True).to(DEVICE)
+model = TextureSynthesizer(64, 64, train=True, encoder_type="vgg").to(DEVICE)
 optimizer = model.configure_optimizers(lr=LEARNING_RATE, step_size=STEP_SIZE, gamma=GAMMA)
 
 wandb.watch(model)
@@ -147,7 +147,7 @@ for epoch in range(NUM_EPOCHS):
 
     for i, (sample_images, target_images) in loop:
 
-        sample_reconstructed, metrics = model.training_step((sample_images, target_images), i)
+        sample_reconstructed, metrics = model.training_step((sample_images, target_images), i, style_loss_type=STYLE_LOSS)
         
         avg_train_loss_epoch.append(metrics["train/loss"].item())
         loop.set_postfix(loss=metrics["train/loss"].item(), content_loss=metrics["train/content_loss"].item(), style_loss=metrics["train/style_loss"].item(), fid_loss=metrics["train/fid_loss"].item())
@@ -170,8 +170,6 @@ for epoch in range(NUM_EPOCHS):
 
             image = sample_reconstructed[idx].cpu()
             save_image(image, os.path.join(epoch_dir, f"image_{idx}.png"))
-            #image = sample_images[idx].cpu()
-            #save_image(image, os.path.join(epoch_dir, f"image_{idx}_x.png"))
 
             image = target_images[idx].cpu()
             save_image(image, os.path.join(epoch_dir, f"image_{idx}_y.png"))
@@ -185,13 +183,14 @@ for epoch in range(NUM_EPOCHS):
         )
         wandb.log({"results": image})
 
+    '''
     if epoch % 50 == 0:
         architecture_path = os.path.join(SAVE_DIR, f"model_architecture_{epoch}.pth")
         torch.save(model.state_dict(), architecture_path)
         # Save model weights
         weights_path = os.path.join(SAVE_DIR, f"model_weights_{epoch}.pth")
         torch.save(model.state_dict(), weights_path)
-
+    '''
     if epoch+1 == NUM_EPOCHS:
         weights_path = os.path.join(SAVE_DIR, f"model_weights_{epoch}.pth")
         torch.save(model.state_dict(), weights_path)
@@ -203,7 +202,7 @@ for epoch in range(NUM_EPOCHS):
  
     for i, (sample_images, target_images) in loop:
 
-        sample_reconstructed, metrics = model.validation_step((sample_images, target_images), i)
+        sample_reconstructed, metrics = model.validation_step((sample_images, target_images), i, style_loss_type=STYLE_LOSS)
 
         avg_test_loss_epoch.append(metrics["test/loss"].item())
         loop.set_postfix(loss=metrics["test/loss"].item(), content_loss=metrics["test/content_loss"].item(), style_loss=metrics["test/style_loss"].item(), fid_loss=metrics["test/fid_loss"].item())
@@ -227,7 +226,6 @@ for epoch in range(NUM_EPOCHS):
 
     with torch.no_grad():
         torch.cuda.empty_cache()
-
 
 
 print("TRAINING COMPLETE!")

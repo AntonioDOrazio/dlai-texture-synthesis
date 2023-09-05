@@ -48,12 +48,12 @@ class TextureSynthesizer(L.LightningModule):
         y_5_2, y_4_2, y_3_2 = self.encoder(x)
         return y_5_2, y_4_2, y_3_2
     
-    def compute_similarity(self, x_5_2, x_4_2, x_3_2):
-        sim_5_2, _  = self.self_similarity(x_5_2)
-        sim_4_2, _  = self.self_similarity(x_4_2) 
-        sim_3_2, _  = self.self_similarity(x_3_2) 
-
-        return sim_5_2, sim_4_2, sim_3_2
+    def get_self_similarity(self, x):
+        y_5_2, y_4_2, y_3_2 = self.encode(x)
+        y_3_2 = self.transconv_block3.self_similarity(y_3_2)#, x)
+        y_4_2 = self.transconv_block4.self_similarity(y_4_2)#, x)
+        y_5_2 = self.transconv_block5.self_similarity(y_5_2)#, x)
+        return y_5_2, y_4_2, y_3_2
 
     def forward(self, x):
         # weights for the transpConv
