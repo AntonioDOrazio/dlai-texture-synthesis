@@ -20,7 +20,6 @@ class VGGFeatures(nn.Module):
         self.std = torch.tensor([0.229, 0.224, 0.225]).view(1, 3, 1, 1).to(DEVICE)
 
         # Layer indices for style loss
-        #self.layer_indices = [3, 8, 17, 26, 35]
         self.layer_indices = [3, 8, 13, 22, 31]
         print(self.features)
 

@@ -1,3 +1,9 @@
+'''
+    Code taken from https://github.com/tchambon/A-Sliced-Wasserstein-Loss-for-Neural-Texture-Synthesis
+'''
+
+
+
 #######################################################################
 # Implementation of 
 # A Sliced Wasserstein Loss for Neural Texture Synthesis
